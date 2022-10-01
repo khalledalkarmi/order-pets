@@ -32,6 +32,8 @@ function generateProduct(product) {
 
     let divImage = document.createElement('div');
     divImage.className = 'block2-pic hov-img0 label-new';
+    divImage.setAttribute('data-label','New');
+    //data-label="New"
     divBlock.append(divImage);
 
     let productImage = document.createElement('img');
