@@ -1,11 +1,29 @@
 let productRoot = document.getElementById('productRoot');
 
 
-// TODO: fire this function onload 
+
+
+fetch("http://localhost/orange-pets/php/controller/getAllProduct.php", {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    }
+})
+    .then((response) => response.json())
+    .then((res) => {
+        console.log(res);
+        res.forEach(product => {
+            generateProduct(product);
+        });
+
+    })
+
+
+
 function generateProduct(product) {
 
     let divContainer = document.createElement('div');
-    divContainer.className = 'col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women';
+    divContainer.className = 'col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men';
     productRoot.append(divContainer);
 
     let divBlock = document.createElement('div');
@@ -21,20 +39,22 @@ function generateProduct(product) {
     divImage.append(productImage);
 
     let quickView = document.createElement('a');
+    quickView.href = '#';
     quickView.className = 'block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1';
+    quickView.textContent = 'Quick View'
     divImage.append(quickView);
 
 
     let blockText = document.createElement('div');
     blockText.className = 'block2-txt flex-w flex-t p-t-14';
-    divContainer.append(blockText);
+    divBlock.append(blockText);
 
     let blockTextChildOne = document.createElement('div');
     blockTextChildOne.className = 'block2-txt-child1 flex-col-l';
     blockText.append(blockTextChildOne);
 
     let productLinkDetails = document.createElement('a');
-    productLinkDetails.href='product-detail.html?id='+`${product.id}`
+    productLinkDetails.href = 'product-detail.html?id=' + `${product.id}`
     productLinkDetails.textContent = product.name;
     blockTextChildOne.append(productLinkDetails);
 
@@ -57,7 +77,7 @@ function generateProduct(product) {
     wishList.append(heart1);
 
     let heart2 = document.createElement('img');
-    heart2.className = 'icon-heart1 dis-block trans-04 ab-t-l';
+    heart2.className = 'icon-heart2 dis-block trans-04 ab-t-l';
     heart2.src = 'images/icons/icon-heart-02.png';
     wishList.append(heart2);
 
@@ -88,31 +108,3 @@ function generateProduct(product) {
 
     // let productName = document.createElement('span');
     // productName.className= 'block1-name ltext-102 trans-04 p-b-8';
-
-
-/*
-                <div class="col-md-6 p-b-30 m-lr-auto">
-                    <!-- Block1 -->
-                    <div class="block1 wrap-pic-w">
-                        <img src="images/banner-04.jpg" alt="IMG-BANNER">
-
-                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                            <div class="block1-txt-child1 flex-col-l">
-                                <span class="block1-name ltext-102 trans-04 p-b-8">
-                                    Women
-                                </span>
-
-                                <span class="block1-info stext-102 trans-04">
-                                    New Trend
-                                </span>
-                            </div>
-
-                            <div class="block1-txt-child2 p-b-4 trans-05">
-                                <div class="block1-link stext-101 cl0 trans-09">
-                                    Shop Now
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-*/
