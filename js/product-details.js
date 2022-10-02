@@ -9,6 +9,15 @@ function GetURLParameter(sParam) {
     }
 }
 
+let sessionStorageData = JSON.parse(sessionStorage.getItem('user'));
+let loginLink = document.getElementById('loginLink');
+let userId;
+if (sessionStorageData[0].id) {
+    userId =sessionStorageData[0].id;
+    loginLink.textContent = 'My Account'
+    loginLink.href = './profile.html';
+}
+
 let productId = GetURLParameter('id');
 
 console.log(productId);
@@ -81,8 +90,24 @@ addToCart.onclick = e => {
     cartItem.setAttribute('data-notify', `${n}`);
 
     itemInCart(product);
+
+    addItemToDatabase();
 }
 
+function addItemToDatabase(){
+    fetch("http://localhost/orange-pets/php/controller/addToCart.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },body: `userId=${userId}&productId=${productId}&quantity=${1}`,
+    })
+        .then((response) => response.text())
+        .then((res) => {
+            //TODO: handle user or admin
+            console.log(res);
+        })
+
+}
 
 // let remove = document.getElementById('remove');
 

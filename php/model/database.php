@@ -295,7 +295,7 @@ class Database
 
     public function checkPasswordToEmail($email, $password)
     {
-        $sql = $this->conn->prepare("SELECT password,role FROM users WHERE email='$email'");
+        $sql = $this->conn->prepare("SELECT * FROM users WHERE email='$email'");
         $sql->execute();
         $pass = $sql->fetchAll(PDO::FETCH_ASSOC);
          
