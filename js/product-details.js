@@ -109,13 +109,14 @@ function addItemToDatabase() {
 
 // let remove = document.getElementById('remove');
 
+// remove element from database 
 function remove(e) {
     console.log("h");
     e.parentElement.remove();
     let i = cartItem.getAttribute('data-notify');
     let n = Number(i) - 1;
     cartItem.setAttribute('data-notify', `${n}`);
-
+    // send post request to remove product from  database
     fetch("http://localhost/orange-pets/php/controller/removeItemFromCart.php", {
         method: "POST",
         headers: {
@@ -128,7 +129,7 @@ function remove(e) {
         })
 }
 
-
+// get all user product from database 
 fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
     method: "POST",
     headers: {
