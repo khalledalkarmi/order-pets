@@ -32,7 +32,6 @@ fetch("http://localhost/orange-pets/php/controller/getProductById.php", {
 })
     .then((response) => response.json())
     .then((res) => {
-        //TODO: handle user or admin
         // console.log(res);
         product = res;
         let image1 = document.getElementById('image1');
@@ -103,8 +102,6 @@ function addItemToDatabase() {
     })
         .then((response) => response.json())
         .then((res) => {
-            //TODO: handle user or admin
-
             console.log(res);
         })
 
@@ -127,7 +124,6 @@ function remove(e) {
     })
         .then((response) => response.text())
         .then((res) => {
-            //TODO: handle user or admin
             console.log(res);
         })
 }
