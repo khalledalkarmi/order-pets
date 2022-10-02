@@ -152,7 +152,6 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
             })
                 .then((response) => response.json())
                 .then((res) => {
-                    //TODO: handle user or admin
                     // console.log(res);
                     itemInCart(res);
                     let i = cartItem.getAttribute('data-notify');
