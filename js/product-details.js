@@ -13,7 +13,7 @@ let sessionStorageData = JSON.parse(sessionStorage.getItem('user'));
 let loginLink = document.getElementById('loginLink');
 let userId;
 if (sessionStorageData[0].id) {
-    userId =sessionStorageData[0].id;
+    userId = sessionStorageData[0].id;
     loginLink.textContent = 'My Account'
     loginLink.href = './profile.html';
 }
@@ -22,7 +22,7 @@ let productId = GetURLParameter('id');
 
 console.log(productId);
 
-let product ;
+let product;
 
 fetch("http://localhost/orange-pets/php/controller/getProductById.php", {
     method: "POST",
@@ -33,7 +33,7 @@ fetch("http://localhost/orange-pets/php/controller/getProductById.php", {
     .then((response) => response.json())
     .then((res) => {
         //TODO: handle user or admin
-        console.log(res);
+        // console.log(res);
         product = res;
         let image1 = document.getElementById('image1');
         let image2 = document.getElementById('image2');
@@ -52,14 +52,14 @@ fetch("http://localhost/orange-pets/php/controller/getProductById.php", {
 let cart = document.getElementById('cart');
 
 function itemInCart(product) {
-    console.log(product);
+    // console.log(product);
     let li = document.createElement('li');
     li.className = 'header-cart-item flex-w flex-t m-b-12';
     cart.append(li);
 
     let div = document.createElement('div');
     div.className = 'header-cart-item-img';
-    div.setAttribute('onclick','remove(this)');
+    div.setAttribute('onclick', 'remove(this)');
     li.append(div);
 
     let image = document.createElement('img');
@@ -77,7 +77,7 @@ function itemInCart(product) {
 
     let price = document.createElement('span');
     price.className = 'header-cart-item-info';
-    price.textContent = '$'+product.price;
+    price.textContent = '$' + product.price;
     divText.append(price);
 
 }
@@ -94,16 +94,17 @@ addToCart.onclick = e => {
     addItemToDatabase();
 }
 
-function addItemToDatabase(){
+function addItemToDatabase() {
     fetch("http://localhost/orange-pets/php/controller/addToCart.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        },body: `userId=${userId}&productId=${productId}&quantity=${1}`,
+        }, body: `userId=${userId}&productId=${productId}&quantity=${1}`,
     })
-        .then((response) => response.text())
+        .then((response) => response.json())
         .then((res) => {
             //TODO: handle user or admin
+
             console.log(res);
         })
 
@@ -111,13 +112,54 @@ function addItemToDatabase(){
 
 // let remove = document.getElementById('remove');
 
-function remove(e){
+function remove(e) {
     console.log("h");
     e.parentElement.remove();
     let i = cartItem.getAttribute('data-notify');
     let n = Number(i) - 1;
     cartItem.setAttribute('data-notify', `${n}`);
+
+    fetch("http://localhost/orange-pets/php/controller/removeItemFromCart.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        }, body: `userId=${userId}&productId=${productId}`,
+    })
+        .then((response) => response.text())
+        .then((res) => {
+            //TODO: handle user or admin
+            console.log(res);
+        })
 }
 
+
+fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    }, body: `userId=${userId}`,
+})
+    .then((response) => response.json())
+    .then((res) => {
+
+        // console.log(res);
+        res.forEach(element => {
+            fetch("http://localhost/orange-pets/php/controller/getProductById.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                }, body: `id=${element.product_id}`,
+            })
+                .then((response) => response.json())
+                .then((res) => {
+                    //TODO: handle user or admin
+                    // console.log(res);
+                    itemInCart(res);
+                    let i = cartItem.getAttribute('data-notify');
+                    let n = Number(i) + 1;
+                    cartItem.setAttribute('data-notify', `${n}`);
+                })
+        });
+    })
 
 
