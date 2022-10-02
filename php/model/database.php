@@ -28,7 +28,7 @@ class Database
         }
     }
 
-    public function insertIntoUserAddressTable(int $userId, string $addressLine1, string $addressLine2, string $city, string $postalCode, string $country, string $mobile)
+    public function insertIntoUserAddressTable($userId, string $addressLine1, string $addressLine2, string $city, string $postalCode, string $country, string $mobile)
     {
         try {
             $sql = "INSERT INTO user_address (user_id, address_line1, address_line2, city, postal_code, country,mobile)
@@ -147,6 +147,16 @@ class Database
         $q->execute(array(':id' => $id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
         return $data;
+    }
+
+    public function getUserIdByEmail(string $email)
+    {
+        $sql = "SELECT id FROM `users` WHERE email = '$email'";
+
+        $q = $this->conn->prepare($sql);
+        $q->execute();
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+        return $data["id"];
     }
 
     public function getByTable(string $table)
