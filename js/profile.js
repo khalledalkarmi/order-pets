@@ -81,7 +81,7 @@ function recentOrder(product) {
     td.append(div);
 
     let img = document.createElement('img');
-    img.src=product.image;
+    img.src=`/orange-pets/ProductImage/${product.image}`;
     div.append(img);
 
     let tdName = document.createElement('td');

@@ -63,7 +63,7 @@ function itemInCart(product) {
     li.append(div);
 
     let image = document.createElement('img');
-    image.src = product.image;
+    image.src = `/orange-pets/ProductImage/${product.image}`;
     div.append(image);
 
     let divText = document.createElement('div');

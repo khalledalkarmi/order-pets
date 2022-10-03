@@ -60,7 +60,7 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
         li.append(div);
     
         let image = document.createElement('img');
-        image.src = product.image;
+        image.src = `/orange-pets/ProductImage/${product.image}`;
         div.append(image);
     
         let divText = document.createElement('div');
@@ -96,7 +96,7 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
         td.append(div);
 
         let img = document.createElement('img');
-        img.src=product.image;
+        img.src=`/orange-pets/ProductImage/${product.image}`;
         div.append(img);
 
         let tdName = document.createElement('td');
