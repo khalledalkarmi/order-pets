@@ -1,3 +1,4 @@
+let productRoot = document.getElementById('root');
 
 // get product from database 
 fetch("http://localhost/orange-pets/php/controller/getAllProduct.php", {
@@ -49,7 +50,6 @@ fetch("http://localhost/orange-pets/php/controller/getAllProduct.php", {
 */
 
 
-let productRoot = document.getElementById('root');
     function generateProduct(product) {
 
 
