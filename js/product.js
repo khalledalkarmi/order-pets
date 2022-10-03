@@ -205,3 +205,138 @@ priceAbove200.onclick = (event) => {
       });
     });
 };
+
+//Filltiring the cats and dogs
+let allproduct = document.getElementById("allproduct");
+let catsanddogs = document.getElementById("catsanddogs");
+let food = document.getElementById("food");
+let supplies = document.getElementById("supplies");
+let dogsaccessories = document.getElementById("dogsaccessories");
+let catsaccessories = document.getElementById("catsaccessorie");
+
+allproduct.onclick = (event) => {
+  // get the product from the database
+  fetch("http://localhost/orange-pets/php/controller/getAllProduct.php", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((res) => {
+      console.log(res);
+      productRoot.innerHTML = "";
+      res.forEach((product) => {
+        // generate product card
+        generateProduct(product);
+      });
+    });
+};
+
+// get only cats and dogs from database 
+catsanddogs.onclick = (event) => {
+  // get the product from the database
+  fetch("http://localhost/orange-pets/php/controller/getAllProductByCategory.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    },
+    body: `ca=catsanddogs`
+  })
+    .then((response) => response.json())
+    .then((res) => {
+      console.log(res);
+      productRoot.innerHTML = "";
+      res.forEach((product) => {
+        // generate product card
+        generateProduct(product);
+      });
+    });
+};
+
+
+// get only the food from the database 
+food.onclick = (event) => {
+  // get the product from the database
+  fetch("http://localhost/orange-pets/php/controller/getAllProductByCategory.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    },
+    body: `ca=food`
+  })
+    .then((response) => response.json())
+    .then((res) => {
+      console.log(res);
+      productRoot.innerHTML = "";
+      res.forEach((product) => {
+        // generate product card
+        generateProduct(product);
+      });
+    });
+};
+
+// get only the supplies from the database 
+supplies.onclick = (event) => {
+  // get the product from the database
+  fetch("http://localhost/orange-pets/php/controller/getAllProductByCategory.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    },
+    body: `ca=supplies`
+  })
+    .then((response) => response.json())
+    .then((res) => {
+      console.log(res);
+      productRoot.innerHTML = "";
+      res.forEach((product) => {
+        // generate product card
+        generateProduct(product);
+      });
+    });
+};
+
+// get only the dogs accessories from the database 
+dogsaccessories.onclick = (event) => {
+  // get the product from the database
+  fetch("http://localhost/orange-pets/php/controller/getAllProductByCategory.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    },
+    body: `ca=dogsaccessories`
+  })
+    .then((response) => response.json())
+    .then((res) => {
+      console.log(res);
+      productRoot.innerHTML = "";
+      res.forEach((product) => {
+        // generate product card
+        generateProduct(product);
+      });
+    });
+};
+
+// get only the cats accessories from the database 
+catsaccessories.onclick = (event) => {
+  // get the product from the database
+  fetch("http://localhost/orange-pets/php/controller/getAllProductByCategory.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    },
+    body: `ca=catsaccessories`
+  })
+    .then((response) => response.json())
+    .then((res) => {
+      console.log(res);
+      productRoot.innerHTML = "";
+      res.forEach((product) => {
+        // generate product card
+        generateProduct(product);
+      });
+    });
+};
+
+
