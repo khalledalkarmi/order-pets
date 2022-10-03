@@ -32,15 +32,15 @@ function generateProduct(product) {
   divBlock.append(divImage);
 
   let productImage = document.createElement("img");
-  productImage.src = product.image;
+  productImage.src =`/orange-pets/ProductImage/${product.image}`;
   divImage.append(productImage);
 
-  let quickView = document.createElement("a");
-  quickView.href = "#";
-  quickView.className =
-    "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1";
-  quickView.textContent = "Quick View";
-  divImage.append(quickView);
+  // let quickView = document.createElement("a");
+  // quickView.href = "#";
+  // quickView.className =
+  //   "block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1";
+  // quickView.textContent = "Quick View";
+  // divImage.append(quickView);
 
   let blockText = document.createElement("div");
   blockText.className = "block2-txt flex-w flex-t p-t-14";
@@ -68,15 +68,15 @@ function generateProduct(product) {
   wishList.className = "btn-addwish-b2 dis-block pos-relative js-addwish-b2";
   blockTextChildTwo.append(wishList);
 
-  let heart1 = document.createElement("img");
-  heart1.className = "icon-heart1 dis-block trans-04";
-  heart1.src = "images/icons/icon-heart-01.png";
-  wishList.append(heart1);
+  // let heart1 = document.createElement("img");
+  // heart1.className = "icon-heart1 dis-block trans-04";
+  // heart1.src = "images/icons/icon-heart-01.png";
+  // wishList.append(heart1);
 
-  let heart2 = document.createElement("img");
-  heart2.className = "icon-heart2 dis-block trans-04 ab-t-l";
-  heart2.src = "images/icons/icon-heart-02.png";
-  wishList.append(heart2);
+  // let heart2 = document.createElement("img");
+  // heart2.className = "icon-heart2 dis-block trans-04 ab-t-l";
+  // heart2.src = "images/icons/icon-heart-02.png";
+  // wishList.append(heart2);
 }
 
 let all = document.getElementById("all");
@@ -207,12 +207,12 @@ priceAbove200.onclick = (event) => {
 };
 
 //Filltiring the cats and dogs
-let allproduct = document.getElementById("allproduct");
+let allproducts = document.getElementById("allproduct");
 let catsanddogs = document.getElementById("catsanddogs");
 let food = document.getElementById("food");
 let supplies = document.getElementById("supplies");
 let dogsaccessories = document.getElementById("dogsaccessories");
-let catsaccessories = document.getElementById("catsaccessorie");
+let catsaccessoriess = document.getElementById("catsaccessorie");
 
 allproduct.onclick = (event) => {
   // get the product from the database
