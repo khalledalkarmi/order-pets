@@ -62,7 +62,7 @@ signUp.onclick = e =>{
              console.log(res);
            
             if (res == 'true') {
-                // goto profile page 
+                window.href = '/index.html'
             }
         })
 }
