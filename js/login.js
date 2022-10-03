@@ -15,13 +15,16 @@ signInBtn.onclick = e =>{
         .then((response) => response.json())
         .then((res) => {
             //TODO: handle user or admin
-            // console.log(res);
+            console.log(res);
+            sessionStorage.setItem('user',JSON.stringify(res));
+
+            //TODO: save id in season  
             if (res != false && res[0].role=='admin') {
               console.log(res[0].role);
+              window.location.href='index.html'
               // goto admin dashboard 
               
             } else if (res != false && res[0].role=='user') {
-              window.location.href='index.html'
             }
             
         })

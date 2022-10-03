@@ -141,11 +141,20 @@ class Database
 
     public function getById(int $id, $table)
     {
-
         $sql = "SELECT * FROM $table WHERE id = :id";
         $q = $this->conn->prepare($sql);
         $q->execute(array(':id' => $id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
+        return $data;
+    }   
+    
+    public function getAllProductById(int $id, $table)
+    {
+
+        $sql = "SELECT * FROM $table WHERE user_id = $id";
+        $q = $this->conn->prepare($sql);
+        $q->execute();
+        $data = $q->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
 
@@ -295,7 +304,7 @@ class Database
 
     public function checkPasswordToEmail($email, $password)
     {
-        $sql = $this->conn->prepare("SELECT password,role FROM users WHERE email='$email'");
+        $sql = $this->conn->prepare("SELECT * FROM users WHERE email='$email'");
         $sql->execute();
         $pass = $sql->fetchAll(PDO::FETCH_ASSOC);
          
@@ -303,6 +312,18 @@ class Database
             return $pass;
         }
         return false;
+    }
+
+    public function deleteItemFromCart($userId , $productId){
+        try {
+            $sql = "DELETE FROM `cart_item` WHERE user_id=$userId AND product_id=$productId";
+            $q = $this->conn->prepare($sql);
+            $q->execute();
+            return true;
+        } catch (Exception $e) {
+            echo $e;
+        }
+
     }
 }
 

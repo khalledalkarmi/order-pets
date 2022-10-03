@@ -19,6 +19,12 @@ fetch("http://localhost/orange-pets/php/controller/getAllProduct.php", {
     })
 
 
+let sessionStorageData = JSON.parse(sessionStorage.getItem('user'));
+let loginLink = document.getElementById('loginLink');
+if (sessionStorageData[0].id) {
+    loginLink.textContent = 'My Account'
+    loginLink.href = './profile.html';
+}
 
 function generateProduct(product) {
 
