@@ -594,8 +594,8 @@
                   >
                 </div>
                 <div class="ms-3" style="margin-top: 130px">
-                  <h5>Andy Horwitz</h5>
-                  <p>New York</p>
+                  <h5 id="userName">Andy Horwitz</h5>
+                  <p id="role">New York</p>
                 </div>
               </div>
          
@@ -603,9 +603,11 @@
                 <div class="mb-5">
                   <p class="lead fw-normal mb-1">About</p>
                   <div class="p-4" style="background-color: #f8f9fa">
-                    <p class="font-italic mb-1">Web Developer</p>
-                    <p class="font-italic mb-1">Lives in New York</p>
-                    <p class="font-italic mb-0">Photographer</p>
+                    <p class="font-italic mb-1" id="ad1">Address Line 1: </p>
+                    <p class="font-italic mb-1"id="ad2">Address Line 2: </p>
+                    <p class="font-italic mb-0" id="city">City: </p>
+                    <p class="font-italic mb-0" id="country">Country: </p>
+                    <p class="font-italic mb-0" id="postal">Postal Code: </p>
                   </div>
                 </div>
                 <div
@@ -858,7 +860,6 @@
     </div>
   </footer>
   
-  <script src="./js/home.js"></script>
   <script>
     var loadFile = function(event) {
       var image = document.getElementById("output");
@@ -866,6 +867,7 @@
     };
   </script>
 
+<script src="./js/profile.js"></script>
   <!--===============================================================================================-->
   <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
   <!--===============================================================================================-->

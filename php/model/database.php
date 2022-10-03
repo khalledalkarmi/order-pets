@@ -306,10 +306,10 @@ class Database
     {
         $sql = $this->conn->prepare("SELECT * FROM users WHERE email='$email'");
         $sql->execute();
-        $pass = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $data = $sql->fetchAll(PDO::FETCH_ASSOC);
          
-        if ($pass[0]['password']==$password) {
-            return $pass;
+        if ($data[0]['password']==$password) {
+            return $data;
         }
         return false;
     }

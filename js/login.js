@@ -2,6 +2,7 @@ let signInBtn = document.getElementById('signInBtn');
 
 signInBtn.onclick = e =>{
     e.preventDefault();
+    // get user data 
     let loginPassword = document.getElementById('loginPassword').value;
     let loginName = document.getElementById('loginName').value;
 
@@ -10,21 +11,24 @@ signInBtn.onclick = e =>{
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            // data to send 
         },body: `email=${loginName}&password=${loginPassword}`,
     })
+    // 
         .then((response) => response.json())
         .then((res) => {
-            //TODO: handle user or admin
             console.log(res);
+            // add user to sessionStorage
             sessionStorage.setItem('user',JSON.stringify(res));
 
-            //TODO: save id in season  
             if (res != false && res[0].role=='admin') {
               console.log(res[0].role);
               window.location.href='index.html'
               // goto admin dashboard 
               
             } else if (res != false && res[0].role=='user') {
+              // goto index
+              window.location.href='index.html'
             }
             
         })

@@ -2,7 +2,7 @@ let productRoot = document.getElementById('productRoot');
 
 
 
-
+// get product from database 
 fetch("http://localhost/orange-pets/php/controller/getAllProduct.php", {
     method: "GET",
     headers: {
@@ -13,6 +13,7 @@ fetch("http://localhost/orange-pets/php/controller/getAllProduct.php", {
     .then((res) => {
         console.log(res);
         res.forEach(product => {
+            // generate product card 
             generateProduct(product);
         });
 
@@ -103,28 +104,12 @@ function generateProduct(product) {
 
 }
 
+/*
+    <div class="block2-pic hov-img0">
+                <img src="images/product-01.jpg" alt="IMG-PRODUCT">
 
-    // let devContainer = document.createElement('div');
-    // devContainer.className = 'col-md-6 p-b-30 m-lr-auto';
-    // productRoot.append(devContainer);
-
-
-    // let blockDev = document.createElement('div');
-    // blockDev.className = '"block1 wrap-pic-w';
-    // devContainer.append(blockDev);
-
-    // let productImage = document.createElement('img');
-    // productImage.src = product.image;
-    // blockDev.append(productImage);
-
-    // let productLink = document.createElement('a');
-    // productLink.href = 'product.html?product_id='+`${product.id}`;
-    // productLink.className = 'block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3';
-    // blockDev.append(productLink);
-
-    // let divName = document.createElement('div');
-    // divName.className = 'block1-txt-child1 flex-col-l';
-    // productLink.append(divName);
-
-    // let productName = document.createElement('span');
-    // productName.className= 'block1-name ltext-102 trans-04 p-b-8';
+                <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                  Quick View
+                </a>
+              </div>
+*/
