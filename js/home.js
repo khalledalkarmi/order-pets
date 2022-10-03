@@ -26,6 +26,18 @@ if (sessionStorageData[0].id) {
     loginLink.href = './profile.html';
 }
 
+// show logout link when the user is logged in 
+let logout = document.getElementById('logout');
+if(sessionStorageData[0].id){
+    logout.textContent = "logout";
+    logout.setAttribute('src', '../index.html')
+}
+// redirect the user to main 
+logout.onclick = () =>{ 
+    sessionStorage.clear();
+}
+
+
 function generateProduct(product) {
 
     let divContainer = document.createElement('div');
