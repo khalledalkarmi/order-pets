@@ -456,7 +456,7 @@
                   <input id="file" type="file" onchange="loadFile(event)" />
                   <img src="https://randomuser.me/api/portraits/women/11.jpg" id="output" width="100" />
                 </div>
-                <a class="btn btn-warning btn-sm" data-bs-toggle="modal" href="#exampleModalToggle" role="button"
+                <a class="btn btn-warning btn-sm" data-bs-toggle="modal" href="#exampleModalToggle" role="button" onclick="editForm()"
                   style="width: 50px;margin-left: 690px;;">Edit</a>
               </div>
               <div class="ms-3" style="margin-top: 130px">
@@ -514,27 +514,27 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body">
-          <form action="update.php" id="edit-form">
+          <form id="editForm">
             <input class="form-control" type="hidden" name="id" />
             <div class="form-group">
               <label for="email">Email</label>
-              <input class="form-control" type="text" name="email" />
+              <input class="form-control" type="text" name="email" id="editEmail" />
             </div>
             <div class="form-group">
               <label for="first_name">First Name</label>
-              <input class="form-control" type="text" name="first_name" />
+              <input class="form-control" type="text" name="first_name" id="editFirst" />
             </div>
             <div class="form-group">
               <label for="last_name">Last Name</label>
-              <input class="form-control" type="text" name="last_name" />
+              <input class="form-control" type="text" name="last_name" id="editLast" />
             </div>
             <div class="form-group">
               <label for="last_name">Password</label>
-              <input class="form-control" type="text" name="password" />
+              <input class="form-control" type="text" name="password" id="editPassword"/>
             </div>
             <div class="form-group">
               <label for="address">Address</label>
-              <textarea class="form-control" type="text" name="address" rows="3"></textarea>
+              <textarea class="form-control" type="text" name="address" rows="3" id="editAddress"></textarea>
             </div>
             <hr>
             <button type="button" class="btn btn-warning" id="btnUpdateSubmit">
