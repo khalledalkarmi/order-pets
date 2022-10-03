@@ -56,7 +56,7 @@ function generateProduct(product) {
     divBlock.append(divImage);
 
     let productImage = document.createElement('img');
-    productImage.src = product.image;
+    productImage.src =`/orange-pets/ProductImage/${product.image}`;
     divImage.append(productImage);
 
     let quickView = document.createElement('a');

@@ -40,11 +40,12 @@ class Database
         }
     }
 
-    public function insertIntoProductTable(string $name, string $description, string $category, int $quantity, float $price, int $discountId = null)
+    public function insertIntoProductTable(string $name, string $description, string $category, int $quantity, float $price,$image,$imageTow,$imageThree)
     {
         try {
-            $sql = "INSERT INTO product (name, description, category, quantity, price,discount_id)
-        VALUES ('$name', '$description', '$category' , $quantity, $price, $discountId)";
+            $sql = "INSERT INTO `product`(`name`, `description`, `category`, `quantity`, `price`, `image`,`imageTow`, `imageThree`) 
+            VALUES ('$name','$description','$category',$quantity,$price,'$image','$imageTow','$imageThree');";
+
             $this->conn->exec($sql);
             return true;
         } catch (Exception $e) {

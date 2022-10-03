@@ -40,9 +40,10 @@ fetch("http://localhost/orange-pets/php/controller/getProductById.php", {
         let productName = document.getElementById('productName');
         let price = document.getElementById('price');
         let details = document.getElementById('details');
-        image1.src = res.image;
-        image2.src = res.imageTow;
-        image3.src = res.imageThree;
+
+        image1.src = `/orange-pets/ProductImage/${res.image}`;
+        image2.src = `/orange-pets/ProductImage/${res.imageTow}`;
+        image3.src = `/orange-pets/ProductImage/${res.imageThree}`;
         productName.textContent = res.name
         price.textContent = '$' + res.price
         details.textContent += res.description

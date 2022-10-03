@@ -8,6 +8,7 @@ let ad2 = document.getElementById('ad2');
 let city = document.getElementById('city');
 let country = document.getElementById('country');
 let postal = document.getElementById('postal');
+let btnUpdateSubmit = document.getElementById('btnUpdateSubmit');
 
 
 console.log(userInfo);
@@ -103,5 +104,22 @@ function recentOrder(product) {
     tdPrice.className = 'column-5 text-center';
     tdPrice.textContent = '$'+Number(product.price);
     tr.append(tdPrice);
+}
+
+
+
+function editForm(){
+    console.log(userInfo);
+    let editEmail = document.getElementById('editEmail');
+    let editFirst = document.getElementById('editFirst');
+    let editLast = document.getElementById('editLast');
+    let editPassword = document.getElementById('editPassword');
+    editEmail.value= userInfo[0].email;
+    editFirst.value= userInfo[0].first_name;
+    editLast.value= userInfo[0].last_name;
+    editPassword.value= userInfo[0].password;
+}
+
+btnUpdateSubmit.onclick = e =>{
     
 }
