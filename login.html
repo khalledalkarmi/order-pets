@@ -38,11 +38,12 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <!--===============================================================================================-->
     <title>login</title>
 </head>
 
-<body>
+<body style="height:auto !important">
     <!-- Header -->
     <header class="header-v3">
         <!-- Header desktop -->
@@ -50,19 +51,29 @@
             <div class="wrap-menu-desktop">
                 <nav class="limiter-menu-desktop p-l-45">
                     <!-- Logo desktop -->
-                    <a href="#" class="logo">
-                        <img src="images/icons/logo-02.png" alt="IMG-LOGO">
-                    </a>
+                    <a href="" class="text-decoration-none">
+                        <h1 class="m-0 display-25 font-weight-semi-bold">
+                          <span class="text-warning font-weight-bold mr-1">
+                            <img
+                              src="./communityIcon_u3lf129nr6861.png"
+                              alt="Avatar Logo"
+                              style="width: 40px; border-radius: 50%"
+                              class="rounded-pill"
+                            />range</span
+                          >
+                          pets
+                        </h1>
+                      </a>
                     <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li>
                                 <a href="index.html">Home</a>
-                                <ul class="sub-menu">
+                                <!-- <ul class="sub-menu">
                                     <li><a href="index.html">Homepage 1</a></li>
                                     <li><a href="home-02.html">Homepage 2</a></li>
                                     <li><a href="home-03.html">Homepage 3</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
 
                             <li>
@@ -89,10 +100,10 @@
                     <!-- Icon header -->
                     <div class="wrap-icon-header flex-w flex-r-m h-full">
                         <div class="flex-c-m h-full p-r-25 bor6">
-                            <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
+                            <!-- <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
                                 data-notify="2">
                                 <i class="zmdi zmdi-shopping-cart"></i>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="flex-c-m h-full p-lr-19">
@@ -107,9 +118,20 @@
         <!-- Header Mobile -->
         <div class="wrap-header-mobile">
             <!-- Logo moblie -->
-            <div class="logo-mobile">
-                <a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
-            </div>
+        <div class="logo-mobile">
+            <a href="" class="text-decoration-none">
+              <h1 class="m-0 display-25 font-weight-semi-bold">
+                <span class="text-warning font-weight-bold mr-1">
+                  <img
+                    src="./communityIcon_u3lf129nr6861.png"
+                    alt="Avatar Logo"
+                    style="width: 40px; border-radius: 50%"
+                    class="rounded-pill"
+                  />
+                </span>
+              </h1>
+            </a>
+          </div>
             <!-- Icon header -->
             <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                 <div class="flex-c-m h-full p-r-5">
@@ -181,7 +203,7 @@
         </div>
     </header>
     <br><br><br><br><br>
-
+     <div class="bgc">
     <div class="container col-4">
         <!-- Pills navs -->
         <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
@@ -201,22 +223,8 @@
             <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
                 <form>
                     <div class="text-center mb-3">
-                        <p>Sign in with:</p>
-                        <button type="button" class="btn btn-link btn-floating mx-1">
-                            <i class="fab fa-facebook-f"></i>
-                        </button>
-
-                        <button type="button" class="btn btn-link btn-floating mx-1">
-                            <i class="fab fa-google"></i>
-                        </button>
-
-                        <button type="button" class="btn btn-link btn-floating mx-1">
-                            <i class="fab fa-twitter"></i>
-                        </button>
-
-                        <button type="button" class="btn btn-link btn-floating mx-1">
-                            <i class="fab fa-github"></i>
-                        </button>
+                        <h4>Sign in </h4>
+                    
                     </div>
 
                     <p class="text-center">or:</p>
@@ -250,7 +258,7 @@
                     </div>
 
                     <!-- Submit button -->
-                    <button type="button" id="signInBtn" class="btn btn-primary btn-block mb-4">Sign in</button>
+                    <button type="button" id="signInBtn" class="btn btn-warning btn-block mb-4">Sign in</button>
 
                     <!-- Register buttons -->
                     <div class="text-center">
@@ -261,8 +269,8 @@
             <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
                 <form>
                     <div class="text-center mb-3">
-                        <p>Sign up with:</p>
-                        <button type="button" class="btn btn-link btn-floating mx-1">
+                        <h4>Sign up </h4>
+                        <!-- <button type="button" class="btn btn-link btn-floating mx-1">
                             <i class="fab fa-facebook-f"></i>
                         </button>
 
@@ -276,7 +284,7 @@
 
                         <button type="button" class="btn btn-link btn-floating mx-1">
                             <i class="fab fa-github"></i>
-                        </button>
+                        </button> -->
                     </div>
 
                     <p class="text-center">or:</p>
@@ -352,11 +360,133 @@
                     </div>
 
                     <!-- Submit button -->
-                    <button type="button" id="signUp" class="btn btn-primary btn-block mb-3">Sign up</button>
+                    <button type="button" id="signUp" class="btn btn-warning btn-block mb-3">Sign up</button>
                 </form>
             </div>
         </div>
     </div>
+</div>
+     <!-- Footer -->
+     <footer class="bg3 p-t-75 p-b-32">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-lg-3 p-b-50">
+              <h4 class="stext-301 cl0 p-b-30">Categories</h4>
+  
+              <ul>
+                <li class="p-b-10">
+                  <a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Women </a>
+                </li>
+  
+                <li class="p-b-10">
+                  <a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Men </a>
+                </li>
+  
+                <li class="p-b-10">
+                  <a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Shoes </a>
+                </li>
+  
+                <li class="p-b-10">
+                  <a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Watches </a>
+                </li>
+              </ul>
+            </div>
+  
+            <div class="col-sm-6 col-lg-3 p-b-50">
+              <h4 class="stext-301 cl0 p-b-30">Help</h4>
+  
+              <ul>
+                <li class="p-b-10">
+                  <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                    Track Order
+                  </a>
+                </li>
+  
+                <li class="p-b-10">
+                  <a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Returns </a>
+                </li>
+  
+                <li class="p-b-10">
+                  <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                    Shipping
+                  </a>
+                </li>
+  
+                <li class="p-b-10">
+                  <a href="#" class="stext-107 cl7 hov-cl1 trans-04"> FAQs </a>
+                </li>
+              </ul>
+            </div>
+  
+            <div class="col-sm-6 col-lg-3 p-b-50">
+              <h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
+  
+              <p class="stext-107 cl7 size-201">
+                Any questions? Let us know in store at 8th floor, 379 Hudson St,
+                New York, NY 10018 or call us on (+1) 96 716 6879
+              </p>
+  
+              <div class="p-t-27">
+                <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16 ">
+                  <i class="fa fa-facebook"></i>
+                </a>
+  
+                <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                  <i class="fa fa-instagram"></i>
+                </a>
+  
+                <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16 ">
+                  <i class="fa fa-pinterest-p"></i>
+                </a>
+              </div>
+            </div>
+  
+           
+          </div>
+  
+          <!-- <div class="p-t-40">
+            <div class="flex-c-m flex-w p-b-18">
+              <a href="#" class="m-all-1">
+                <img src="images/icons/icon-pay-01.png" alt="ICON-PAY" />
+              </a>
+  
+              <a href="#" class="m-all-1">
+                <img src="images/icons/icon-pay-02.png" alt="ICON-PAY" />
+              </a>
+  
+              <a href="#" class="m-all-1">
+                <img src="images/icons/icon-pay-03.png" alt="ICON-PAY" />
+              </a>
+  
+              <a href="#" class="m-all-1">
+                <img src="images/icons/icon-pay-04.png" alt="ICON-PAY" />
+              </a>
+  
+              <a href="#" class="m-all-1">
+                <img src="images/icons/icon-pay-05.png" alt="ICON-PAY" />
+              </a>
+            </div> -->
+  
+            <p class="stext-107 cl6 txt-center">
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved 
+              
+            </p>
+          </div>
+        </div>
+    
+      </footer>
+  
+      <!-- Back to top -->
+      <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+          <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+      </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
 
     <!-- Pills content -->
