@@ -196,7 +196,7 @@ class Database
             $sql = "SELECT * FROM `product` WHERE category='$category'";
             $q = $this->conn->prepare($sql);
             $q->execute();
-            $data = $q->fetch(PDO::FETCH_ASSOC);
+            $data = $q->fetchAll(PDO::FETCH_ASSOC);
             return $data;
         } catch (Exception $e) {
             echo $e;
@@ -217,10 +217,10 @@ class Database
         }
     }
 
-    function getProductByLessPrice($price)
+    function getProductByLessPrice($price) 
     {
         try {
-            $sql = "SELECT * FROM `product` WHERE price < $price";
+            $sql = "SELECT * FROM `product` WHERE price < $price"; 
             $q = $this->conn->prepare($sql);
             $q->execute();
             $data = $q->fetch(PDO::FETCH_ASSOC);
@@ -230,13 +230,13 @@ class Database
         }
     }
 
-    function getProductByBetweenPrice($priceOne, $priceTwo)
+    function getProductByBetweenPrice($priceOne, $priceTwo) 
     {
         try {
             $sql = "SELECT * FROM `product` WHERE price BETWEEN $priceOne AND $priceTwo";
             $q = $this->conn->prepare($sql);
             $q->execute();
-            $data = $q->fetch(PDO::FETCH_ASSOC);
+            $data = $q->fetchAll(PDO::FETCH_ASSOC);
             return $data;
         } catch (Exception $e) {
             echo $e;
@@ -249,7 +249,7 @@ class Database
             $sql = "SELECT * FROM `order_items` INNER JOIN users ON users.id = $userId";
             $q = $this->conn->prepare($sql);
             $q->execute();
-            $data = $q->fetch(PDO::FETCH_ASSOC);
+            $data = $q->fetchAll(PDO::FETCH_ASSOC);
             return $data;
         } catch (Exception $e) {
             echo $e;
