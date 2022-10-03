@@ -249,7 +249,7 @@ class Database
             $sql = "SELECT * FROM `order_items` INNER JOIN users ON users.id = $userId";
             $q = $this->conn->prepare($sql);
             $q->execute();
-            $data = $q->fetch(PDO::FETCH_ASSOC);
+            $data = $q->fetchAll(PDO::FETCH_ASSOC);
             return $data;
         } catch (Exception $e) {
             echo $e;
