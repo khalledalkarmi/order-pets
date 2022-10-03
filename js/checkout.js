@@ -9,6 +9,7 @@ if (sessionStorageData[0].id) {
 }
 
 
+let totalPrice = 0;
 
 
 fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
@@ -32,6 +33,11 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
                 .then((res) => {
                      console.log(res);
                     itemInCart(res);
+                    checkout(res);
+                    totalPrice+= Number(res.price);
+                    console.log(totalPrice);
+                     total.textContent= '$' +totalPrice ;
+
                     let i = cartItem.getAttribute('data-notify');
                     let n = Number(i) + 1;
                     cartItem.setAttribute('data-notify', `${n}`);
@@ -72,3 +78,38 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
         divText.append(price);
     
     }
+
+    let total = document.getElementById('total');
+
+    let tableRoot = document.getElementById('tableRoot');
+    function checkout(product) {
+        let tr = document.createElement('tr');
+        tr.className = 'table_row';
+        tableRoot.append(tr);
+
+        let td = document.createElement('td');
+        td.className = 'column-1';
+        tr.append(td);
+
+        let div = document.createElement('div');
+        div.className = 'how-itemcart1';
+        td.append(div);
+
+        let img = document.createElement('img');
+        img.src=product.image;
+        div.append(img);
+
+        let tdName = document.createElement('td');
+        tdName.className = 'column-2';
+        tdName.textContent = product.name;
+        tr.append(tdName); 
+
+
+        let tdPrice = document.createElement('td');
+        tdPrice.className = 'column-3';
+        tdPrice.textContent = Number(product.price);
+        tr.append(tdPrice);
+        
+    }
+
+
