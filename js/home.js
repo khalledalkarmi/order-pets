@@ -59,11 +59,11 @@ function generateProduct(product) {
     productImage.src =`/orange-pets/ProductImage/${product.image}`;
     divImage.append(productImage);
 
-    let quickView = document.createElement('a');
-    quickView.href = '#';
-    quickView.className = 'block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1';
-    quickView.textContent = 'Quick View'
-    divImage.append(quickView);
+    // let quickView = document.createElement('a');
+    // quickView.href = '#';
+    // quickView.className = 'block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1';
+    // quickView.textContent = 'Quick View'
+    // divImage.append(quickView);
 
 
     let blockText = document.createElement('div');
@@ -92,15 +92,15 @@ function generateProduct(product) {
     wishList.className = 'btn-addwish-b2 dis-block pos-relative js-addwish-b2';
     blockTextChildTwo.append(wishList);
 
-    let heart1 = document.createElement('img');
-    heart1.className = 'icon-heart1 dis-block trans-04';
-    heart1.src = 'images/icons/icon-heart-01.png';
-    wishList.append(heart1);
+    // let heart1 = document.createElement('img');
+    // heart1.className = 'icon-heart1 dis-block trans-04';
+    // heart1.src = 'images/icons/icon-heart-01.png';
+    // wishList.append(heart1);
 
-    let heart2 = document.createElement('img');
-    heart2.className = 'icon-heart2 dis-block trans-04 ab-t-l';
-    heart2.src = 'images/icons/icon-heart-02.png';
-    wishList.append(heart2);
+    // let heart2 = document.createElement('img');
+    // heart2.className = 'icon-heart2 dis-block trans-04 ab-t-l';
+    // heart2.src = 'images/icons/icon-heart-02.png';
+    // wishList.append(heart2);
 
 }
 
