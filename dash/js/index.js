@@ -21,7 +21,6 @@ addProduct.onclick = e => {
     })
         .then((response) => response.text())
         .then((res) => {
-            //TODO: handle user or admin
             console.log(res);
         })
 }
