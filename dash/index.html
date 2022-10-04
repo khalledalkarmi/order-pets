@@ -147,11 +147,68 @@
 
 
 
-      <!-- Recent Sales Start -->
+      <!-- User table Start -->
       <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-center rounded p-4">
           <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">Recent Salse</h6>
+            <h6 class="mb-0">All Users</h6>
+
+          </div>
+          <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered  mb-0">
+              <thead>
+                <tr class="text-dark">
+
+                  <th scope="col">Email</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Mobile</th>
+                  <th scope="col">Create At</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="AllUsersTable">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- All product Start -->
+      <div class="container-fluid pt-4 px-4">
+        <div class="bg-light text-center rounded p-4">
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">All Product</h6>
+          </div>
+          <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered  mb-0">
+              <thead>
+                <tr class="text-dark">
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Created At</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="AllProductTable" >
+         
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container-fluid pt-4 px-4">
+        <div class="bg-light text-center rounded p-4">
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Recent sales</h6>
             <a href="">Show All</a>
           </div>
           <div class="table-responsive">
