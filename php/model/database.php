@@ -53,6 +53,18 @@ class Database
         }
     }
 
+    public function updateProductTable(int $id,string $name, string $description, string $category, int $quantity, float $price)
+    {
+        try {
+            $sql = "UPDATE `product` SET `name`='$name',`description`='$description',
+            `category`='$category',`quantity`='$quantity',`price`=$price WHERE id = $id";
+            $this->conn->exec($sql);
+            return true;
+        } catch (Exception $e) {
+            echo $e;
+        }
+    }
+
     function addDiscountToProduct(int $productId, int $discountId)
     {
         /*
