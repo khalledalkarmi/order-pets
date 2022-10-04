@@ -339,4 +339,14 @@ catsaccessories.onclick = (event) => {
     });
 };
 
+let loginLink = document.getElementById('loginLink');
 
+let logout = document.getElementById('logout');
+if (sessionStorage.getItem('user')) {
+  loginLink.style.display = 'none'
+  logout.style.display = ''
+}
+
+logout.onclick = e =>{
+  sessionStorage.clear();
+}
