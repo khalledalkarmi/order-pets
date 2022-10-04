@@ -122,6 +122,9 @@ function remove(e) {
     let i = cartItem.getAttribute('data-notify');
     let n = Number(i) - 1;
     cartItem.setAttribute('data-notify', `${n}`);
+    totalPrice-= Number(product.price);
+    console.log(totalPrice);
+     total.textContent= '$' +totalPrice ;
     // send post request to remove product from  database
     fetch("http://localhost/orange-pets/php/controller/removeItemFromCart.php", {
         method: "POST",
@@ -132,7 +135,7 @@ function remove(e) {
         .then((response) => response.text())
         .then((res) => {
             console.log(res);
-         
+       
         
         })
 }
