@@ -212,7 +212,7 @@ let catsanddogs = document.getElementById("catsanddogs");
 let food = document.getElementById("food");
 let supplies = document.getElementById("supplies");
 let dogsaccessories = document.getElementById("dogsaccessories");
-let catsaccessoriess = document.getElementById("catsaccessorie");
+let catsaccessories = document.getElementById("catsaccessories");
 
 allproduct.onclick = (event) => {
   // get the product from the database
