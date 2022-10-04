@@ -325,7 +325,8 @@
 						<h4 class="mtext-109 cl2 p-b-30">
 							Cart Totals
 						</h4>
-						<div class="flex-w flex-t p-t-27 p-b-33">
+						<div class="flex-w flex-t p-t-27 p-b-33 justify-content-start">
+							
 							<div class="size-208">
 								<span class="mtext-101 cl2">
 									Total:
@@ -337,9 +338,13 @@
 									$79.65
 								</span>
 							</div>
+							<div class="col-md-6 form-group text-warning">
+								
+								<input class="form-control mt-5" type="text" placeholder="Coupon" id="coupon">
+							</div>
 						</div>
 
-						<a href="checkout.html"
+						<a  id="ProceedToCheckout"
 							class="flex-c-m stext-101 cl0 size-116 bg3 bor14  p-lr-15 trans-04 pointer">
 							Proceed to Checkout
 						</a>
@@ -355,7 +360,9 @@
 			<i class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
-	<script src="./js/checkout.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<script src="./js/shopCart.js"></script>
 
 	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
