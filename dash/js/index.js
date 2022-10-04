@@ -21,8 +21,8 @@ addProduct.onclick = e => {
     })
         .then((response) => response.text())
         .then((res) => {
-            //TODO: handle user or admin
             console.log(res);
+            window.location.href = '/orange-pets/dash/'
         })
 }
 
@@ -44,7 +44,7 @@ fetch("http://localhost/orange-pets/php/controller/getAllUsers.php", {
     })
 
 
-function generateUserRow(user ) {
+function generateUserRow(user) {
     let tr = document.createElement('tr');
     tr.setAttribute('id', `user${user.id}`)
     AllUsersTable.append(tr);
@@ -175,8 +175,14 @@ function generateProductRow(product) {
     let update = document.createElement('a');
     update.className = 'btn btn-sm btn-warning mt-5';
     update.textContent = 'Update';
-    update.setAttribute('onclick', 'update(' + product.id + ')')
+    update.setAttribute('onclick', 'updateP(' + product.id + ')')
+    update.setAttribute('data-bs-toggle', 'modal')
+    update.setAttribute('data-bs-toggle', 'modal')
+    update.setAttribute('href', '#exampleModalToggle')
+    update.setAttribute('role', 'button')
     tdAction.append(update);
+
+    //data-bs-toggle="modal" href="#exampleModalToggle" role="button"
 
     let deleteU = document.createElement('a');
     deleteU.className = 'btn btn-sm btn-warning mt-5';
@@ -199,5 +205,59 @@ function deleteP(id) {
             console.log(res);
 
         })
-        productRow.remove();
+    productRow.remove();
+}
+let idA=0;
+function updateP(id) {
+    fetch("http://localhost/orange-pets/php/controller/getProductById.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        }, body: `id=${id}`
+    })
+        .then((response) => response.json())
+        .then((res) => {
+            console.log(res);
+            let editName = document.getElementById('editName');
+            let editDescription = document.getElementById('editDescription');
+            let editCategory = document.getElementById('editCategory');
+            let editPrice = document.getElementById('editPrice');
+            let editQuantity = document.getElementById('editQuantity');
+            editName.value = res.name;
+            editDescription.value = res.description;
+            editCategory.value = res.category;
+            editPrice.value = res.price;
+            editQuantity.value = res.quantity;
+            idA=res.id;
+        })
+
+        
+}
+
+
+
+function updateBtn() {
+    let editName = document.getElementById('editName');
+    let editDescription = document.getElementById('editDescription');
+    let editCategory = document.getElementById('editCategory');
+    let editPrice = document.getElementById('editPrice');
+    let editQuantity = document.getElementById('editQuantity');
+    let name = editName.value
+    let dis = editDescription.value
+    let category = editCategory.value
+    let price = editPrice.value
+    let quantity = editQuantity.value
+
+    fetch("http://localhost/orange-pets/php/controller/updateProductById.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        }, body: `id=${idA}&productName=${name}&productDescription=${dis}&productCategory=${category}&productDiscount=${productDiscount}
+        &productQuantity=${quantity}&productPrice=${price}`,
+    })
+        .then((response) => response.text())
+        .then((res) => {
+            console.log(res);
+            window.location.href = '/orange-pets/dash/'
+        })
 }
