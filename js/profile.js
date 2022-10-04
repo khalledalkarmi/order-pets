@@ -123,3 +123,9 @@ function editForm(){
 btnUpdateSubmit.onclick = e =>{
     
 }
+
+let logout = document.getElementById('logout');
+logout.onclick = () =>{ 
+    sessionStorage.clear();
+
+}
