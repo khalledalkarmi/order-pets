@@ -50,7 +50,8 @@ fetch("http://localhost/orange-pets/php/controller/getProductById.php", {
     })
 
 let cart = document.getElementById('cart');
-
+let totalPrice = 0;
+let total = document.getElementById('total');
 function itemInCart(product) {
     // console.log(product);
     let li = document.createElement('li');
@@ -79,6 +80,10 @@ function itemInCart(product) {
     price.className = 'header-cart-item-info';
     price.textContent = '$' + product.price;
     divText.append(price);
+
+    totalPrice+= Number(product.price);
+    console.log(totalPrice);
+     total.textContent= '$' +totalPrice ;
 
 }
 
@@ -127,6 +132,8 @@ function remove(e) {
         .then((response) => response.text())
         .then((res) => {
             console.log(res);
+         
+        
         })
 }
 
