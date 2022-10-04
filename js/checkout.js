@@ -108,8 +108,9 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
         let tdPrice = document.createElement('td');
         tdPrice.className = 'column-3';
         tdPrice.textContent = Number(product.price);
-        tr.append(tdPrice);
-        
+        tr.append(tdPrice); 
     }
+
+    
 
 
