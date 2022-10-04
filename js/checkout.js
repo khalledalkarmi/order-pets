@@ -33,7 +33,7 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
                 .then((res) => {
                      console.log(res);
                     itemInCart(res);
-                    checkout(res);
+                    // checkout(res);
                     totalPrice+= Number(res.price);
                     console.log(totalPrice);
                      total.textContent= '$' +totalPrice ;
@@ -79,37 +79,37 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
     
     }
 
-    let total = document.getElementById('total');
+    // let total = document.getElementById('total');
 
-    let tableRoot = document.getElementById('tableRoot');
-    function checkout(product) {
-        let tr = document.createElement('tr');
-        tr.className = 'table_row';
-        tableRoot.append(tr);
+    // let tableRoot = document.getElementById('tableRoot');
+    // function checkout(product) {
+    //     let tr = document.createElement('tr');
+    //     tr.className = 'table_row';
+    //     tableRoot.append(tr);
 
-        let td = document.createElement('td');
-        td.className = 'column-1';
-        tr.append(td);
+    //     let td = document.createElement('td');
+    //     td.className = 'column-1';
+    //     tr.append(td);
 
-        let div = document.createElement('div');
-        div.className = 'how-itemcart1';
-        td.append(div);
+    //     let div = document.createElement('div');
+    //     div.className = 'how-itemcart1';
+    //     td.append(div);
 
-        let img = document.createElement('img');
-        img.src=`/orange-pets/ProductImage/${product.image}`;
-        div.append(img);
+    //     let img = document.createElement('img');
+    //     img.src=`/orange-pets/ProductImage/${product.image}`;
+    //     div.append(img);
 
-        let tdName = document.createElement('td');
-        tdName.className = 'column-2';
-        tdName.textContent = product.name;
-        tr.append(tdName); 
+    //     let tdName = document.createElement('td');
+    //     tdName.className = 'column-2';
+    //     tdName.textContent = product.name;
+    //     tr.append(tdName); 
 
 
-        let tdPrice = document.createElement('td');
-        tdPrice.className = 'column-3';
-        tdPrice.textContent = Number(product.price);
-        tr.append(tdPrice);
+    //     let tdPrice = document.createElement('td');
+    //     tdPrice.className = 'column-3';
+    //     tdPrice.textContent = Number(product.price);
+    //     tr.append(tdPrice);
         
-    }
+    // }
 
 

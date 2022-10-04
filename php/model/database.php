@@ -329,7 +329,7 @@ class Database
 
     public function deleteItemFromCart($userId , $productId){
         try {
-            $sql = "DELETE FROM `cart_item` WHERE user_id=$userId AND product_id=$productId";
+            $sql = "DELETE FROM `cart_item` WHERE user_id=$userId AND product_id=$productId LIMIT 1";
             $q = $this->conn->prepare($sql);
             $q->execute();
             return true;

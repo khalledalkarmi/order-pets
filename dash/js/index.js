@@ -22,6 +22,7 @@ addProduct.onclick = e => {
         .then((response) => response.text())
         .then((res) => {
             console.log(res);
+            window.location.href = '/orange-pets/dash/'
         })
 }
 
