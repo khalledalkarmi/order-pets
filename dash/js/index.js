@@ -1,5 +1,8 @@
 let addProduct = document.getElementById('addProduct');
 
+if (sessionStorage.getItem('user')) {
+    
+}
 addProduct.onclick = e => {
     let productName = document.getElementById('productName').value;
     let productDescription = document.getElementById('productDescription').value;

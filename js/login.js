@@ -24,7 +24,7 @@ signInBtn.onclick = e =>{
             if (res != false && res[0].role=='admin') {
               console.log(res[0].role);
               // goto admin dashboard 
-              window.location.href='./orange-pets/dash/index.html'
+              window.location.href='/orange-pets/dash/index.html'
               
             } else if (res != false && res[0].role=='user') {
               // goto index
