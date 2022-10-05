@@ -40,11 +40,11 @@ fetch("http://localhost/orange-pets/php/controller/getUserOrder.php", {
 })
     .then((response) => response.json())
     .then((res) => {
-        // console.log(res);
+        console.log(res);
         //   console.log(res);
 
         res.forEach(element => {
-            getProduct(element.product_id);
+            getProduct(element.id);
         });
 
     });

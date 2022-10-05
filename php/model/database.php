@@ -267,7 +267,7 @@ class Database
     function getUserOrders(int $userId)
     {
         try {
-            $sql = "SELECT * FROM `order_items` INNER JOIN users ON users.id = $userId";
+            $sql = "SELECT * FROM `order_items` WHERE user_id = $userId";
             $q = $this->conn->prepare($sql);
             $q->execute();
             $data = $q->fetchAll(PDO::FETCH_ASSOC);
