@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscritption Box</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial;
+        font-size: 17px;
+      }
+
+      #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+      }
+
+      .content {
+        position: fixed;
+        bottom: 120px;
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        /* font-style: oblique; */
+        font-weight: bolder;
+      }
+
+      #myBtn {
+        width: 200px;
+        font-size: 18px;
+        padding: 10px;
+        border: none;
+        background: #000;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      #myBtn:hover {
+        background: #ddd;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <header class="header-v3" style="z-index: 9999; display: flex">
+    <!-- Header desktop -->
+    <div class="container-menu-desktop trans-03">
+      <div class="wrap-menu-desktop">
+        <nav class="limiter-menu-desktop p-l-45">
+          <!-- Logo desktop -->
+          <a href="" class="text-decoration-none">
+            <h1 class="m-0 display-25 font-weight-semi-bold">
+              <span
+                class="text-warning font-weight-bold mr-1"
+                style="font-family: cursive"
+              >
+                <img
+                  src="./communityIcon_u3lf129nr6861.png"
+                  alt="Avatar Logo"
+                  style="width: 40px; border-radius: 50%"
+                  class="rounded-pill"
+                />rder</span
+              >
+              pets
+            </h1>
+          </a>
+
+          <!-- Menu desktop -->
+          <div class="menu-desktop">
+            <ul class="main-menu">
+              <li>
+                <a href="index.html">Home</a>
+                <!-- <ul class="sub-menu">
+                    <li><a href="index.html">Homepage 1</a></li>
+                    <li><a href="home-02.html">Homepage 2</a></li>
+                    <li><a href="home-03.html">Homepage 3</a></li>
+                  </ul> -->
+              </li>
+
+              <li>
+                <a href="product.html">Shop</a>
+              </li>
+
+              <li class="label1" data-label1="hot">
+                <a href="shoping-cart.html">Features</a>
+              </li>
+
+              <li>
+                <a href="login.html" id="loginLink">login</a>
+              </li>
+
+              <li>
+                <a href="subscription.html">subscription Box</a>
+              </li>
+
+              <li>
+                <a href="about.html">About</a>
+              </li>
+
+              <li>
+                <a href="" id="logout"></a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Icon header -->
+          <div class="wrap-icon-header flex-w flex-r-m h-full">
+            <div class="flex-c-m h-full p-r-25 bor6"></div>
+
+            <div class="flex-c-m h-full p-lr-19">
+              <div
+                class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar"
+              >
+                <i class="zmdi zmdi-menu"></i>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Header Mobile -->
+    <div class="wrap-header-mobile">
+      <!-- Logo moblie -->
+      <div class="logo-mobile">
+        <a href="" class="text-decoration-none">
+          <h1 class="m-0 display-25 font-weight-semi-bold">
+            <span class="text-warning font-weight-bold mr-1">
+              <img
+                src="./communityIcon_u3lf129nr6861.png"
+                alt="Avatar Logo"
+                style="width: 40px; border-radius: 50%"
+                class="rounded-pill"
+              />
+            </span>
+          </h1>
+        </a>
+      </div>
+
+      <!-- Icon header -->
+      <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+        <div class="flex-c-m h-full p-r-5"></div>
+      </div>
+
+      <!-- Button show menu -->
+      <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div class="menu-mobile">
+      <ul class="main-menu-m">
+        <li>
+          <a href="index.html">Home</a>
+          <span class="arrow-main-menu-m">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </span>
+        </li>
+
+        <li>
+          <a href="product.html">Shop</a>
+        </li>
+
+        <li>
+          <a href="shoping-cart.html" class="label1 rs1" data-label1="hot"
+            >Features</a
+          >
+        </li>
+
+        <li>
+          <a href="about.html">About</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Modal Search -->
+    <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+      <button class="flex-c-m btn-hide-modal-search trans-04">
+        <i class="zmdi zmdi-close"></i>
+      </button>
+
+      <form class="container-search-header">
+        <div class="wrap-search-header">
+          <input
+            class="plh0"
+            type="text"
+            name="search"
+            placeholder="Search..."
+          />
+
+          <button class="flex-c-m trans-04">
+            <i class="zmdi zmdi-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  <body>
+    <video autoplay muted loop id="myVideo">
+      <source src="Untitled ‑ Made with FlexClip.mp4" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+
+    <div class="content">
+      <h1>Order pets Subscription BOX</h1>
+      <p>Give your pet a random GIFT every month.</p>
+      <a
+        href="http://localhost/orange-pets/checkout.html"
+        class="btn btn-warning blink"
+        id="sub"
+        style="
+          position: relative;
+          margin-top: 20px;
+          font-size: medium;
+          color: rgb(255, 255, 255);
+          border-radius: 20px;
+          width: 130px;
+        "
+        ><span
+          id="flashText"
+          style="font-weight: 800; font-family: poppins-medium"
+        >
+          Subscripe</span
+        >
+      </a>
+    </div>
+
+    <script>
+      var video = document.getElementById("myVideo");
+      var btn = document.getElementById("myBtn");
+
+      function myFunction() {
+        if (video.paused) {
+          video.play();
+          btn.innerHTML = "Pause";
+        } else {
+          video.pause();
+          btn.innerHTML = "Play";
+        }
+      }
+    </script>
+  </body>
+</html>
