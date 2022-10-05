@@ -10,8 +10,24 @@ if (sessionStorageData[0].id) {
 
 
 let totalPrice = 0;
+let cartId = 0;
+let quantity = 0;
+let orderId = 0;
 
+// get id for cart 
+fetch("http://localhost/orange-pets/php/controller/getCartID.php", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    }, body: `id=${userId}`
+})
+    .then((response) => response.json())
+    .then((res) => {
+        console.log(res);
+        cartId = res.id;
+    })
 
+// get all id product in cart for user
 fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
     method: "POST",
     headers: {
@@ -22,7 +38,12 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
     .then((res) => {
 
         // console.log(res);
+
+        // quantity in cart 
+        quantity = res.length;
+        // console.log(quantity);
         res.forEach(element => {
+            // get product details
             fetch("http://localhost/orange-pets/php/controller/getProductById.php", {
                 method: "POST",
                 headers: {
@@ -32,10 +53,15 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
                 .then((response) => response.json())
                 .then((res) => {
                     console.log(res);
+                    // print product in cart html 
                     itemInCart(res);
+
+                    // print product in table html 
                     checkout(res);
+
                     totalPrice += Number(res.price);
                     console.log(totalPrice);
+                    // print total price 
                     total.textContent = '$' + totalPrice;
 
                     let i = cartItem.getAttribute('data-notify');
@@ -47,6 +73,7 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
 
 let cartB = document.getElementById('cartB');
 
+// function to add item in cart html 
 function itemInCart(product) {
     // console.log(product);
     let li = document.createElement('li');
@@ -79,8 +106,7 @@ function itemInCart(product) {
 
 }
 
-// let total = document.getElementById('total');
-
+// function to print product in table 
 let tableRoot = document.getElementById('tableRoot');
 function checkout(product) {
     let tr = document.createElement('tr');
@@ -117,9 +143,9 @@ let proceedToCheckout = document.getElementById('ProceedToCheckout');
 
 proceedToCheckout.onclick = e => {
     let coupon = document.getElementById('coupon');
-
+    // check if coupon 
     if (coupon.value != '') {
-        // get product from database
+        // get all coupon  from database
         fetch("http://localhost/orange-pets/php/controller/getCoupon.php", {
             method: "GET",
             headers: {
@@ -130,19 +156,67 @@ proceedToCheckout.onclick = e => {
             .then((res) => {
                 console.log(res);
                 res.forEach(c => {
-                    if (c.name ==coupon.value ) {
-                        totalPrice -= (totalPrice*(c.discount_percent)/100)
+                    // check if coupon match 
+                    if (c.name == coupon.value) {
+                        totalPrice -= (totalPrice * (c.discount_percent) / 100)
                         total.textContent = '$' + totalPrice;
                         Swal.fire(
                             'Coupon Added',
                             '',
                             'success'
-                          )
-                        console.log(c.name,totalPrice);
+                        )
+                        console.log(c.name, totalPrice);
                     }
                 });
             });
     }
 
-    
+
+
+    // user_id
+    // cart_id
+    // quantity_id
+
+    //Add order 
+    fetch("http://localhost/orange-pets/php/controller/addOrder.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        }, body: `userId=${userId}&cartId=${cartId}&quantityNum=${quantity}`
+    })
+        .then((response) => response.json())
+        .then((res) => {
+            console.log(res);
+
+        });
+
+    //get order id
+    fetch("http://localhost/orange-pets/php/controller/getOrderID.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        }, body: `id=${userId}`
+    })
+        .then((response) => response.json())
+        .then((res) => {
+            orderId = res.id;
+            console.log(orderId);
+
+            fetch("http://localhost/orange-pets/php/controller/addOrderDetails.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                }, body: `userId=${userId}&orderItemId=${res.id}&total=${totalPrice}&status=NotPaid`
+            })
+                .then((response) => response.text())
+                .then((res) => {
+                    console.log(res);
+
+                });
+        })
+
+
+
+    window.location.href = '/orange-pets/checkout.html';
+
 }

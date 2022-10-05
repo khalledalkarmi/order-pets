@@ -40,7 +40,7 @@ class Database
         }
     }
 
-    public function insertIntoProductTable(string $name, string $description, string $category, int $quantity, float $price,$image,$imageTow,$imageThree)
+    public function insertIntoProductTable(string $name, string $description, string $category, int $quantity, float $price, $image, $imageTow, $imageThree)
     {
         try {
             $sql = "INSERT INTO `product`(`name`, `description`, `category`, `quantity`, `price`, `image`,`imageTow`, `imageThree`) 
@@ -53,7 +53,7 @@ class Database
         }
     }
 
-    public function updateProductTable(int $id,string $name, string $description, string $category, int $quantity, float $price)
+    public function updateProductTable(int $id, string $name, string $description, string $category, int $quantity, float $price)
     {
         try {
             $sql = "UPDATE `product` SET `name`='$name',`description`='$description',
@@ -79,14 +79,14 @@ class Database
         }
     }
 
-    public function insertIntoOrderItemsTable(int $orderId, int $productId, int $quantity)
+    public function insertIntoOrderItemsTable(int $orderId, int $cartId, int $quantity)
     {
         /*
         TODO: check if order_id and product_id is correct
         */
         try {
-            $sql = "INSERT INTO order_items (order_id, product_id, quantity)
-        VALUES ($orderId, $productId, $quantity)";
+            $sql = "INSERT INTO order_items (user_id, cart_id, quantity)
+        VALUES ($orderId, $cartId, $quantity)";
             $this->conn->exec($sql);
             return true;
         } catch (Exception $e) {
@@ -94,15 +94,25 @@ class Database
         }
     }
 
-    public function insertIntoOrderDetailsTable(int $userId, float $total, string $status)
+    public function insertIntoOrderDetailsTable(int $userId, $orderItemId, $total, $status)
     {
-        /*
-        TODO: check if user_id is correct
-        */
+
         try {
-            $sql = "INSERT INTO order_items (user_id, total, status)
-        VALUES ($userId, $total, $status)";
+            $sql = "INSERT INTO `order_details` (user_id, order_item_id,total, status)
+        VALUES ($userId, $orderItemId,$total, '$status')";
             $this->conn->exec($sql);
+            return true;
+        } catch (Exception $e) {
+            echo $e;
+        }
+    } 
+    public function getUserOrderDetails(int $userId)
+    {
+
+        try {
+            $sql = "UPDATE `order_details` SET status = 'Paid' WHERE user_id=$userId";
+            $q = $this->conn->prepare($sql);
+            $q->execute();
             return true;
         } catch (Exception $e) {
             echo $e;
@@ -111,9 +121,7 @@ class Database
 
     public function insertIntoDiscountTable(string $name, float $discountPercent, bool $active)
     {
-        /*
-        TODO: check if user_id is correct
-        */
+    
         try {
             $sql = "INSERT INTO order_items (name, discount_percent	, active)
         VALUES ('$name', $discountPercent, $active)";
@@ -159,8 +167,8 @@ class Database
         $q->execute(array(':id' => $id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
         return $data;
-    }   
-    
+    }
+
     public function getAllProductById(int $id, $table)
     {
 
@@ -230,10 +238,10 @@ class Database
         }
     }
 
-    function getProductByLessPrice($price) 
+    function getProductByLessPrice($price)
     {
         try {
-            $sql = "SELECT * FROM `product` WHERE price < $price"; 
+            $sql = "SELECT * FROM `product` WHERE price < $price";
             $q = $this->conn->prepare($sql);
             $q->execute();
             $data = $q->fetch(PDO::FETCH_ASSOC);
@@ -243,7 +251,7 @@ class Database
         }
     }
 
-    function getProductByBetweenPrice($priceOne, $priceTwo) 
+    function getProductByBetweenPrice($priceOne, $priceTwo)
     {
         try {
             $sql = "SELECT * FROM `product` WHERE price BETWEEN $priceOne AND $priceTwo";
@@ -267,9 +275,8 @@ class Database
         } catch (Exception $e) {
             echo $e;
         }
+    }
 
-    } 
-    
     function getUserCartItems(int $userId)
     {
         try {
@@ -281,7 +288,30 @@ class Database
         } catch (Exception $e) {
             echo $e;
         }
-
+    }
+    function getCartID(int $userId)
+    {
+        try {
+            $sql = "SELECT id FROM `cart_item` WHERE user_id = $userId";
+            $q = $this->conn->prepare($sql);
+            $q->execute();
+            $data = $q->fetch(PDO::FETCH_ASSOC);
+            return $data;
+        } catch (Exception $e) {
+            echo $e;
+        }
+    }  
+    function getOrderID(int $userId)
+    {
+        try {
+            $sql = "SELECT id FROM `order_items` WHERE user_id = $userId";
+            $q = $this->conn->prepare($sql);
+            $q->execute();
+            $data = $q->fetch(PDO::FETCH_ASSOC);
+            return $data;
+        } catch (Exception $e) {
+            echo $e;
+        }
     }
 
     // adding new function to test the email if exist in the database 
@@ -320,14 +350,15 @@ class Database
         $sql = $this->conn->prepare("SELECT * FROM users WHERE email='$email'");
         $sql->execute();
         $data = $sql->fetchAll(PDO::FETCH_ASSOC);
-         
-        if ($data[0]['password']==$password) {
+
+        if ($data[0]['password'] == $password) {
             return $data;
         }
         return false;
     }
 
-    public function deleteItemFromCart($userId , $productId){
+    public function deleteItemFromCart($userId, $productId)
+    {
         try {
             $sql = "DELETE FROM `cart_item` WHERE user_id=$userId AND product_id=$productId LIMIT 1";
             $q = $this->conn->prepare($sql);
@@ -336,7 +367,6 @@ class Database
         } catch (Exception $e) {
             echo $e;
         }
-
     }
 }
 
