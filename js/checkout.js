@@ -45,6 +45,7 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
         });
     })
 
+
 let cartB = document.getElementById('cartB');
 
 function itemInCart(product) {
@@ -103,5 +104,8 @@ placeOrder.onclick = e => {
 
 }
 
+
+
+    
 
 

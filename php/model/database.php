@@ -368,7 +368,27 @@ class Database
             echo $e;
         }
     }
+
+    public function insertOrderInSubscriptionTable($userId, int $price, string $paid){
+        $dateSubscribed = date("Y-m-d"); 
+        // $today="2007-02-28";
+        // $dateEnd = strftime("%Y-%m-%d", strtotime("$dateSubscribed +30 day"));
+        // $dateEnd = strtotime("+30 day", $dateSubscribed);
+        $endDate = date('Y-m-d',strtotime("+30 day")); 
+
+        try{
+            $sql = "INSERT INTO subscription (`user_id` , `subscription_end_time`, `price`, `paid` )
+            VALUES  ($userId, '$endDate', $price, '$paid')";
+            $result = $this->conn->prepare($sql);
+            $result->execute();
+            return true ;
+        }
+        catch(Exception $r){
+            echo $r;
+        }
+    }
 }
+
 
 
 
