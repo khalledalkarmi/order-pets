@@ -98,7 +98,7 @@ addToCart.onclick = e => {
 
     addItemToDatabase();
 }
-
+// add to cart
 function addItemToDatabase() {
     fetch("http://localhost/orange-pets/php/controller/addToCart.php", {
         method: "POST",

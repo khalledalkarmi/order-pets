@@ -31,12 +31,12 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
             })
                 .then((response) => response.json())
                 .then((res) => {
-                     console.log(res);
+                    console.log(res);
                     itemInCart(res);
-                    checkout(res);
-                    totalPrice+= Number(res.price);
+                    // checkout(res);
+                    totalPrice += Number(res.price);
                     console.log(totalPrice);
-                     total.textContent= '$' +totalPrice ;
+                    total.textContent = '$' + totalPrice;
 
                     let i = cartItem.getAttribute('data-notify');
                     let n = Number(i) + 1;
@@ -45,71 +45,66 @@ fetch("http://localhost/orange-pets/php/controller/getUserProduct.php", {
         });
     })
 
-    let cartB = document.getElementById('cartB');
 
-    function itemInCart(product) {
-        // console.log(product);
-        let li = document.createElement('li');
-        li.className = 'header-cart-item flex-w flex-t m-b-12';
-        // console.log(li);
-        cartB.append(li);
-    
-        let div = document.createElement('div');
-        div.className = 'header-cart-item-img';
-        div.setAttribute('onclick', 'remove(this)');
-        li.append(div);
-    
-        let image = document.createElement('img');
-        image.src = `/orange-pets/ProductImage/${product.image}`;
-        div.append(image);
-    
-        let divText = document.createElement('div');
-        divText.className = 'header-cart-item-txt p-t-8';
-        li.append(divText);
-    
-        let a = document.createElement('a');
-        a.className = 'header-cart-item-name m-b-18 hov-cl1 trans-04';
-        a.textContent = product.name;
-        divText.append(a);
-    
-        let price = document.createElement('span');
-        price.className = 'header-cart-item-info';
-        price.textContent = '$' + product.price;
-        divText.append(price);
-    
-    }
+let cartB = document.getElementById('cartB');
 
-    // let total = document.getElementById('total');
+function itemInCart(product) {
+    // console.log(product);
+    let li = document.createElement('li');
+    li.className = 'header-cart-item flex-w flex-t m-b-12';
+    // console.log(li);
+    cartB.append(li);
 
-    let tableRoot = document.getElementById('tableRoot');
-    function checkout(product) {
-        let tr = document.createElement('tr');
-        tr.className = 'table_row';
-        tableRoot.append(tr);
+    let div = document.createElement('div');
+    div.className = 'header-cart-item-img';
+    div.setAttribute('onclick', 'remove(this)');
+    li.append(div);
 
-        let td = document.createElement('td');
-        td.className = 'column-1';
-        tr.append(td);
+    let image = document.createElement('img');
+    image.src = `/orange-pets/ProductImage/${product.image}`;
+    div.append(image);
 
-        let div = document.createElement('div');
-        div.className = 'how-itemcart1';
-        td.append(div);
+    let divText = document.createElement('div');
+    divText.className = 'header-cart-item-txt p-t-8';
+    li.append(divText);
 
-        let img = document.createElement('img');
-        img.src=`/orange-pets/ProductImage/${product.image}`;
-        div.append(img);
+    let a = document.createElement('a');
+    a.className = 'header-cart-item-name m-b-18 hov-cl1 trans-04';
+    a.textContent = product.name;
+    divText.append(a);
 
-        let tdName = document.createElement('td');
-        tdName.className = 'column-2';
-        tdName.textContent = product.name;
-        tr.append(tdName); 
+    let price = document.createElement('span');
+    price.className = 'header-cart-item-info';
+    price.textContent = '$' + product.price;
+    divText.append(price);
+
+}
+
+let placeOrder = document.getElementById('placeOrder');
+console.log(placeOrder);
+placeOrder.onclick = e => {
+    e.preventDefault()
+    fetch("http://localhost/orange-pets/php/controller/getUserOrderDetails.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        }, body: `userId=${userId}`,
+    })
+        .then((response) => response.text())
+        .then((res) => {
+            console.log(res);
+            Swal.fire(
+                'Paid Done',
+                '',
+                'success'
+            )
+        })
 
 
-        let tdPrice = document.createElement('td');
-        tdPrice.className = 'column-3';
-        tdPrice.textContent = Number(product.price);
-        tr.append(tdPrice); 
-    }
+
+}
+
+
 
     
 
