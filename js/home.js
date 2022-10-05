@@ -74,7 +74,7 @@ function generateProduct(product) {
 
   let price = document.createElement("span");
   price.className = "stext-105 cl3";
-  price.textContent = product.price;
+  price.textContent = product.price + " $";
   blockTextChildOne.append(price);
 
   let blockTextChildTwo = document.createElement("div");
