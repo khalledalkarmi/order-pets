@@ -40,11 +40,11 @@ fetch("http://localhost/orange-pets/php/controller/getUserOrder.php", {
 })
     .then((response) => response.json())
     .then((res) => {
-        // console.log(res);
+        console.log(res);
         //   console.log(res);
 
         res.forEach(element => {
-            getProduct(element.product_id);
+            getProduct(element.id);
         });
 
     });
@@ -81,7 +81,7 @@ function recentOrder(product) {
     td.append(div);
 
     let img = document.createElement('img');
-    img.src=product.image;
+    img.src=`/orange-pets/ProductImage/${product.image}`;
     div.append(img);
 
     let tdName = document.createElement('td');
@@ -122,4 +122,10 @@ function editForm(){
 
 btnUpdateSubmit.onclick = e =>{
     
+}
+
+let logout = document.getElementById('logout');
+logout.onclick = () =>{ 
+    sessionStorage.clear();
+
 }

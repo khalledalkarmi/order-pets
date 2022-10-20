@@ -50,7 +50,8 @@ fetch("http://localhost/orange-pets/php/controller/getProductById.php", {
     })
 
 let cart = document.getElementById('cart');
-
+let totalPrice = 0;
+let total = document.getElementById('total');
 function itemInCart(product) {
     // console.log(product);
     let li = document.createElement('li');
@@ -63,7 +64,7 @@ function itemInCart(product) {
     li.append(div);
 
     let image = document.createElement('img');
-    image.src = product.image;
+    image.src = `/orange-pets/ProductImage/${product.image}`;
     div.append(image);
 
     let divText = document.createElement('div');
@@ -80,6 +81,10 @@ function itemInCart(product) {
     price.textContent = '$' + product.price;
     divText.append(price);
 
+    totalPrice+= Number(product.price);
+    console.log(totalPrice);
+     total.textContent= '$' +totalPrice ;
+
 }
 
 let addToCart = document.getElementById('addToCart');
@@ -93,7 +98,7 @@ addToCart.onclick = e => {
 
     addItemToDatabase();
 }
-
+// add to cart
 function addItemToDatabase() {
     fetch("http://localhost/orange-pets/php/controller/addToCart.php", {
         method: "POST",
@@ -117,6 +122,9 @@ function remove(e) {
     let i = cartItem.getAttribute('data-notify');
     let n = Number(i) - 1;
     cartItem.setAttribute('data-notify', `${n}`);
+    totalPrice-= Number(product.price);
+    console.log(totalPrice);
+     total.textContent= '$' +totalPrice ;
     // send post request to remove product from  database
     fetch("http://localhost/orange-pets/php/controller/removeItemFromCart.php", {
         method: "POST",
@@ -127,6 +135,8 @@ function remove(e) {
         .then((response) => response.text())
         .then((res) => {
             console.log(res);
+       
+        
         })
 }
 

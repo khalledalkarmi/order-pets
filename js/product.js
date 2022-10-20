@@ -212,7 +212,7 @@ let catsanddogs = document.getElementById("catsanddogs");
 let food = document.getElementById("food");
 let supplies = document.getElementById("supplies");
 let dogsaccessories = document.getElementById("dogsaccessories");
-let catsaccessoriess = document.getElementById("catsaccessorie");
+let catsaccessories = document.getElementById("catsaccessories");
 
 allproduct.onclick = (event) => {
   // get the product from the database
@@ -339,4 +339,14 @@ catsaccessories.onclick = (event) => {
     });
 };
 
+let loginLink = document.getElementById('loginLink');
 
+let logout = document.getElementById('logout');
+if (sessionStorage.getItem('user')) {
+  loginLink.style.display = 'none'
+  logout.style.display = ''
+}
+
+logout.onclick = e =>{
+  sessionStorage.clear();
+}
